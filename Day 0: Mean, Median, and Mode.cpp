@@ -7,8 +7,10 @@ using namespace std;
 
 
 int main() {
-    int n,i,j,count=0;
+    int n,i,j,count=0,max=0,itr,mode=0;
     cin>>n;
+
+    //For finding MEAN-----------------------------------
     float a[n],sum=0;
     for(i=0;i<n;i++)
     {
@@ -16,6 +18,8 @@ int main() {
         sum=sum+a[i];
     }
     printf("%.1f\n",sum/n);
+    
+    //For finding MEDIAN-----------------------------------------------
     for(i=0;i<n;i++)
         {
             for(j=i+1;j<n;j++)
@@ -30,10 +34,22 @@ int main() {
         {
             printf("%.1f\n",(a[n/2-1]+a[n/2])/2);
         }
+    
+    //For finding MODE-------------------------------------------
     for(i=0;i<n;i++)
     {
-    bool exists = std::find(std::begin(a), std::end(a), a[i]) != std::end(a);
-    count++;
+    itr=a[i];
+    for(j=0;j<n;j++)
+        {
+            if(itr==a[j])
+                count++;
+            if(count>max){
+                max=count;
+                if(max==1)
+                    mode=a[n];
+                else mode=itr;}
+        }
     }
+    printf("%d",mode);
     return 0;
 }
