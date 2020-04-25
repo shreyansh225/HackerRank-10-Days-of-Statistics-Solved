@@ -1,3 +1,27 @@
+//---------------------------Python3 Code-----------------------------------------------------------
+import numpy as np
+from scipy import stats
+
+size=int(input())
+num=list(map(int,input().split()))
+print(np.mean(num))
+print(np.median(num))
+print(int(stats.mode(num)[0]))
+/*
+Input (stdin)
+    10
+    64630 11735 14216 99233 14470 4978 73429 38120 51135 67060
+Output
+    43900.6
+    44627.5
+    4978
+*/
+
+
+
+/*
+---------------------------C++ CODE --------------------------------------
+
 #include <cmath>
 #include <cstdio>
 #include <vector>
@@ -53,3 +77,4 @@ int main() {
     printf("%d",mode);
     return 0;
 }
+*/
