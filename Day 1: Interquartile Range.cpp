@@ -23,13 +23,20 @@ int main()
         }
     }
     //int z = sizeof(t)/sizeof(t[0]); 
-    sort(t, t+sum);                            // FOR SORTED a
-
+    sort(t, t+sum);
     //cout<<sum<<" \n";
     if(sum%2==1)  // for all odd numbers ------------------
     {
-        q1=(t[sum/4+1]+t[sum/4])/2;
-        q3=(t[sum/2+sum/4]+t[sum/2+sum/4+1])/2;
+        if((sum/2)%2==0)       // for odd numbers like 17,21,25,45  having first division of sum by 2 as an even no.
+        {
+            q1=(t[sum/4-1]+t[sum/4])/2;
+            q3=(t[sum/2+sum/4]+t[sum/2+sum/4+1])/2;
+        }
+        else                   // for odd numbers like 15,19,23,47  having first division of sum by 2 as an odd no.
+        {
+            q1=t[sum/4];
+            q3=t[sum/2+sum/4+1];
+        }
     }
     else
     { 
