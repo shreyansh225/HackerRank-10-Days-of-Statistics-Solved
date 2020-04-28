@@ -2,30 +2,49 @@
 #include <cstdio>
 #include <vector>
 #include <iostream>
+#include <iomanip>
 #include <algorithm>
 using namespace std;
 
 
 int main() 
 {
-    int n,i,j,sum=0,u=0,t[1000];
+    int n,i,j,sum=0;
     cin>>n;
-    int x[n],f[n];
-    for(i=1;i<n;i++) cin>>x[i];
-    for(i=1;i<n;i++) 
-        {cin>>f[i];
-        sum+=f[i];}
-    cout<<sum<<" \n";
-    //int t[sum];
+    float x[n],f[n],t[1000],q1,q3;
+    for(i=0;i<n;i++) cin>>x[i];
+    for(i=0;i<n;i++) cin>>f[i];
     for(i=0;i<n;i++)
     {
         for(j=0;j<f[i];j++)
         {
-            t[u]=x[i];
-            u++;
+            t[sum]=x[i];
+            sum++;
         }
-    } 
-    for(i=0;i<u;i++)
-        cout<<t[i]<<" "; 
+    }
+    //int z = sizeof(t)/sizeof(t[0]); 
+    sort(t, t+sum);                            // FOR SORTED a
+
+    //cout<<sum<<" \n";
+    if(sum%2==1)  // for all odd numbers ------------------
+    {
+        q1=(t[sum/4+1]+t[sum/4])/2;
+        q3=(t[sum/2+sum/4]+t[sum/2+sum/4+1])/2;
+    }
+    else
+    { 
+        if((sum/2)%2==0) // for even numbers like 6,10,14,18  having first division by 2 as an odd no.
+        {
+        q1=(t[sum/4]+t[sum/4-1])/2;
+        q3=(t[sum/4+sum/2]+t[sum/2+sum/4-1])/2;
+        }
+        else  // for even numbers like 8,12,16,20  having first division by 2 as an even no.
+        {
+        q1=t[sum/4];
+        q3=t[sum/2+sum/4];
+        }
+    }
+    //for(i=0;i<sum;i++) cout<<t[i]<<" ";
+    cout<<fixed<<setprecision(1)<<(q3-q1);
     return 0;
 }
